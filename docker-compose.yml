@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  train:
+    # Build the training service
+    # ...
+
+    # Mount volumes
+    # ...
+
+    # Run the training command
+    # command: python train.py add cli args here as to where the model is supposed to be stored
+
+  evaluate:
+    # Build the evaluation service
+    # ...
+
+    # Mount volumes
+    # volumes:
+    #   - ./data:/workspace/data
+    # also mount the mnist volume
+    # ...
+
+    # Run the evaluation command
+    # command: python eval.py maybe add command line argument here, like where the model is located
+
+  infer:
+    # Build the inference service
+    # ...
+
+    # Mount volumes
+    # ...
+
+    # Run the inference command
+    # command: python infer.py
