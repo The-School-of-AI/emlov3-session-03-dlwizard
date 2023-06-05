@@ -363,14 +363,15 @@ def train_model(
     model_dir = os.path.join(root_dir, "model")
     if not os.path.exists(model_dir):
         os.mkdir(model_dir)
-    if resume:
-        # Load checkpoint.
-        print("==> Resuming from checkpoint..")
-        checkpoint = torch.load(os.path.join(model_dir, model_name))
-        model.load_state_dict(checkpoint["net"])
-        print("==> Model loaded from checkpoint..")
-        best_acc = checkpoint["acc"]
-        start_epoch = checkpoint["epoch"]
+    else:
+        if resume:
+            # Load checkpoint.
+            print("==> Resuming from checkpoint..")
+            checkpoint = torch.load(os.path.join(model_dir, model_name))
+            model.load_state_dict(checkpoint["net"])
+            print("==> Model loaded from checkpoint..")
+            best_acc = checkpoint["acc"]
+            start_epoch = checkpoint["epoch"]
 
     # Optimization algorithm from torch.optim
     optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=momentum)
